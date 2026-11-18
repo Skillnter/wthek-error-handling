@@ -1,0 +1,105 @@
+{
+  "name": "@wthek/error-handling",
+  "version": "1.0.0-beta.1",
+  "description": "Antigravity skill and AI agent instruction bundle for standardized HTTP error handling, RFC-7807/9457 Problem Details, status codes, and validation pipelines using @wthek and http-error-kit.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "wthek-error-handling": "./dist/bin.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "test": "jest --config jest.config.ts",
+    "coverage": "jest --coverage --config jest.config.ts",
+    "postinstall": "node -e \"const fs = require('fs'); if (fs.existsSync('./dist/bin.js')) { require('child_process').spawnSync(process.execPath, ['./dist/bin.js', '--postinstall'], { stdio: 'inherit' }); }\"",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "files": [
+    "dist",
+    "skills",
+    "plugin.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skillnter/wthek-error-handling.git"
+  },
+  "keywords": [
+    "antigravity",
+    "antigravity-skill",
+    "antigravity-plugin",
+    "agent-skill",
+    "ai-agent",
+    "error-handling",
+    "http-error-kit",
+    "wthek",
+    "http-errors",
+    "http-status-codes",
+    "express",
+    "fastify",
+    "hono",
+    "koa",
+    "nestjs",
+    "restify",
+    "zod",
+    "valibot",
+    "typebox",
+    "rfc-7807",
+    "rfc-9457",
+    "mcp",
+    "model-context-protocol",
+    "skillnter"
+  ],
+  "author": "Himanshu Bansal <skillhimanshubansal@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Skillnter/wthek-error-handling/issues"
+  },
+  "homepage": "https://github.com/Skillnter/wthek-error-handling#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/Skillnter"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/skillnter"
+    },
+    {
+      "type": "open_collective",
+      "url": "https://opencollective.com/skillnter"
+    },
+    {
+      "type": "buy_me_a_coffee",
+      "url": "https://buymeacoffee.com/skillnter"
+    },
+    {
+      "type": "paypal",
+      "url": "https://www.paypal.com/paypalme/skillnter"
+    }
+  ],
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.4",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.3"
+  }
+}

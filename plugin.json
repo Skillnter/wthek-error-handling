@@ -1,0 +1,11 @@
+{
+  "name": "wthek-error-handling",
+  "displayName": "WTHek Error Handling",
+  "description": "Standardized HTTP error handling, RFC-7807/9457 Problem Details, status codes, and validation error pipelines (Zod, Valibot, TypeBox) for Express, Fastify, Hono, Koa, NestJS, and MCP.",
+  "suggestedPrompts": [
+    "Add standardized error handling to my Express API",
+    "Configure RFC-7807 problem details in Hono",
+    "Transform TypeBox validation errors with http-error-kit"
+  ]
+}
+
