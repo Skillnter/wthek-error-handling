@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as os from "os";
-import { IInstallOptions, IPostinstallResult } from "./types";
+import { IInstallOptions } from "./types";
 
 /**
  * Path to package root directory.
@@ -94,44 +94,4 @@ export const installSkill = (options?: IInstallOptions): string => {
   }
 
   return targetDir;
-};
-
-/**
- * Executes postinstall script logic when installed as a package dependency.
- *
- * @param {string} [targetRoot] - Optional root directory override for testing or manual invocation.
- * @returns {IPostinstallResult} Result object indicating status, installed targets, or skip reason.
- */
-export const handlePostinstall = (targetRoot?: string): IPostinstallResult => {
-  const initCwd = targetRoot || process.env.INIT_CWD;
-  if (!initCwd) {
-    return {
-      installed: false,
-      targets: [],
-      reason: "INIT_CWD environment variable is not defined",
-    };
-  }
-  if (path.resolve(initCwd) === path.resolve(PKG_ROOT)) {
-    return {
-      installed: false,
-      targets: [],
-      reason: "In-repo package development detected",
-    };
-  }
-  const targets: string[] = [];
-  const agentsTarget = path.join(initCwd, ".agents", "skills", "wthek-error-handling");
-  copyDirRecursive(SOURCE_SKILL_DIR, agentsTarget);
-  targets.push(agentsTarget);
-
-  const githubDir = path.join(initCwd, ".github");
-  if (fs.existsSync(githubDir)) {
-    const githubSkillsTarget = path.join(githubDir, "skills", "wthek-error-handling");
-    copyDirRecursive(SOURCE_SKILL_DIR, githubSkillsTarget);
-    targets.push(githubSkillsTarget);
-  }
-
-  return {
-    installed: true,
-    targets,
-  };
 };
