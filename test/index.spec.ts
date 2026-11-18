@@ -4,7 +4,6 @@ import {
   getPluginManifestPath,
   getPluginManifest,
   installSkill,
-  handlePostinstall,
 } from "../src/index";
 
 describe("index exports", () => {
@@ -29,9 +28,8 @@ describe("index exports", () => {
     expect(manifest.suggestedPrompts.length).toBeGreaterThan(0);
   });
 
-  it("should export installSkill and handlePostinstall functions", () => {
+  it("should export installSkill function", () => {
     expect(typeof installSkill).toBe("function");
-    expect(typeof handlePostinstall).toBe("function");
   });
 });
 

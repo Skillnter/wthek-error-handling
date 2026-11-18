@@ -4,7 +4,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/Skillnter/wthek-error-handling/main.yml?branch=main)](https://github.com/Skillnter/wthek-error-handling/actions)
 [![Socket](https://socket.dev/api/badge/npm/package/@wthek/error-handling)](https://socket.dev/npm/package/@wthek/error-handling)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/error-handling/1.0.0-beta.1)](https://socket.dev/npm/package/@wthek/error-handling/overview/1.0.0-beta.1)
 [![Skills](https://skills.sh/b/Skillnter/wthek-error-handling)](https://skills.sh/Skillnter/wthek-error-handling)
 ![Antigravity Plugin](https://img.shields.io/badge/Antigravity-Plugin-4285F4?logo=google&logoColor=white) 
 ![Agent Skills](https://img.shields.io/badge/Agent_Skills-Compatible-0F766E?logo=githubcopilot&logoColor=white) 
@@ -101,9 +100,8 @@ Install the package as a development dependency:
 npm install -D @wthek/error-handling
 ```
 
-> **Automated Setup**: The package includes a `postinstall` script that automatically copies the skill into `.agents/skills/wthek-error-handling` (and `.github/skills/` if a `.github` folder exists), making it immediately active for your AI agents with zero manual steps.
+Then run the bundled CLI to install the skill into your workspace:
 
-You can also run the CLI installer manually at any time:
 ```bash
 npx wthek-error-handling
 ```

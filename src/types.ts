@@ -23,17 +23,3 @@ export interface IInstallOptions {
   github?: boolean;
   dest?: string;
 }
-
-/**
- * @typedef {Object} IPostinstallResult
- * @property {boolean} installed - Whether skill files were installed.
- * @property {string[]} targets - Target directory paths where skills were placed.
- * @property {string} [reason] - Reason description if postinstall was skipped.
- */
-export interface IPostinstallResult {
-  installed: boolean;
-  targets: string[];
-  reason?: string;
-}
-
-

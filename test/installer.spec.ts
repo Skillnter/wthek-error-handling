@@ -14,10 +14,6 @@ import {
   copyDirRecursive,
   resolveTargetDir,
   installSkill,
-  handlePostinstall,
-  PKG_ROOT,
-  SOURCE_SKILL_DIR,
-  SOURCE_PLUGIN_JSON,
 } from "../src/installer";
 
 describe("installer", () => {
@@ -113,74 +109,6 @@ describe("installer", () => {
       );
 
       (os.homedir as jest.Mock).mockReset();
-    });
-  });
-
-  describe("handlePostinstall", () => {
-    const originalEnv = process.env.INIT_CWD;
-
-    afterEach(() => {
-      process.env.INIT_CWD = originalEnv;
-    });
-
-    it("should return installed false if INIT_CWD is not defined", () => {
-      delete process.env.INIT_CWD;
-      const res = handlePostinstall();
-      expect(res.installed).toBe(false);
-      expect(res.targets).toHaveLength(0);
-      expect(res.reason).toContain("INIT_CWD");
-    });
-
-    it("should return installed false if INIT_CWD is the package root directory", () => {
-      process.env.INIT_CWD = PKG_ROOT;
-      const res = handlePostinstall();
-      expect(res.installed).toBe(false);
-      expect(res.targets).toHaveLength(0);
-      expect(res.reason).toContain("In-repo");
-    });
-
-    it("should install skill to INIT_CWD/.agents/skills when run in external consumer project", () => {
-      const mockProjectDir = path.join(tmpDir, "consumer-app");
-      fs.mkdirSync(mockProjectDir, { recursive: true });
-      process.env.INIT_CWD = mockProjectDir;
-
-      const res = handlePostinstall();
-      expect(res.installed).toBe(true);
-      expect(res.targets).toHaveLength(1);
-      expect(
-        fs.existsSync(
-          path.join(mockProjectDir, ".agents", "skills", "wthek-error-handling", "SKILL.md")
-        )
-      ).toBe(true);
-    });
-
-    it("should also install to .github/skills if .github folder exists in consumer project", () => {
-      const mockProjectDir = path.join(tmpDir, "consumer-github-app");
-      fs.mkdirSync(path.join(mockProjectDir, ".github"), { recursive: true });
-      process.env.INIT_CWD = mockProjectDir;
-
-      const res = handlePostinstall();
-      expect(res.installed).toBe(true);
-      expect(res.targets).toHaveLength(2);
-      expect(
-        fs.existsSync(
-          path.join(mockProjectDir, ".github", "skills", "wthek-error-handling", "SKILL.md")
-        )
-      ).toBe(true);
-    });
-
-    it("should accept explicit targetRoot override parameter", () => {
-      const mockProjectDir = path.join(tmpDir, "consumer-param-app");
-      fs.mkdirSync(mockProjectDir, { recursive: true });
-
-      const res = handlePostinstall(mockProjectDir);
-      expect(res.installed).toBe(true);
-      expect(res.targets).toHaveLength(1);
-      expect(
-        fs.existsSync(
-          path.join(mockProjectDir, ".agents", "skills", "wthek-error-handling", "SKILL.md")
-        )
-      ).toBe(true);
     });
   });
 });

@@ -122,55 +122,6 @@ describe("bin / CLI helpers", () => {
       expect(logSpy).toHaveBeenCalled();
     });
 
-    it("should print success banner when --postinstall installs files", () => {
-      const postinstallSpy = jest
-        .spyOn(installer, "handlePostinstall")
-        .mockReturnValue({
-          installed: true,
-          targets: ["/mock/project/.agents/skills/wthek-error-handling"],
-        });
-      const logSpy = jest.spyOn(console, "log").mockImplementation(() => {});
-      process.argv = ["node", "bin.js", "--postinstall"];
-      runCli();
-      expect(postinstallSpy).toHaveBeenCalled();
-      expect(logSpy).toHaveBeenCalledWith(
-        expect.stringContaining("WTHek Error Handling Skill Installed Successfully")
-      );
-    });
-
-    it("should print notice when --postinstall skips with reason", () => {
-      const postinstallSpy = jest
-        .spyOn(installer, "handlePostinstall")
-        .mockReturnValue({
-          installed: false,
-          targets: [],
-          reason: "In-repo package development detected",
-        });
-      const logSpy = jest.spyOn(console, "log").mockImplementation(() => {});
-      process.argv = ["node", "bin.js", "--postinstall"];
-      runCli();
-      expect(postinstallSpy).toHaveBeenCalled();
-      expect(logSpy).toHaveBeenCalledWith(
-        expect.stringContaining("Postinstall notice: In-repo package development detected")
-      );
-    });
-
-    it("should print notice with fallback message when --postinstall skips without reason", () => {
-      const postinstallSpy = jest
-        .spyOn(installer, "handlePostinstall")
-        .mockReturnValue({
-          installed: false,
-          targets: [],
-        });
-      const logSpy = jest.spyOn(console, "log").mockImplementation(() => {});
-      process.argv = ["node", "bin.js", "--postinstall"];
-      runCli();
-      expect(postinstallSpy).toHaveBeenCalled();
-      expect(logSpy).toHaveBeenCalledWith(
-        expect.stringContaining("Postinstall notice: Skipped installation.")
-      );
-    });
-
     it("should call installSkill and log success on normal execution", () => {
       const installSpy = jest
         .spyOn(installer, "installSkill")
