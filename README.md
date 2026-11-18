@@ -5,11 +5,13 @@
 [![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/Skillnter/wthek-error-handling/main.yml?branch=main)](https://github.com/Skillnter/wthek-error-handling/actions)
 [![Socket](https://socket.dev/api/badge/npm/package/@wthek/error-handling)](https://socket.dev/npm/package/@wthek/error-handling)
 [![Skills](https://skills.sh/b/Skillnter/wthek-error-handling)](https://skills.sh/Skillnter/wthek-error-handling)
-![Antigravity Plugin](https://img.shields.io/badge/Antigravity-Plugin-4285F4?logo=google&logoColor=white) 
-![Agent Skills](https://img.shields.io/badge/Agent_Skills-Compatible-0F766E?logo=githubcopilot&logoColor=white) 
-![MCP](https://img.shields.io/badge/MCP-Compatible-2563EB?logo=protocols.io&logoColor=white)
+![Antigravity Plugin](https://img.shields.io/badge/Antigravity-Plugin_Included-4285F4?logo=google&logoColor=white) 
+![Agent Skills](https://img.shields.io/badge/Agent_Skills-Format-0F766E?logo=githubcopilot&logoColor=white) 
+![MCP](https://img.shields.io/badge/MCP-Error_Handling-2563EB?logo=protocols.io&logoColor=white)
 
-An AI agent skill and Antigravity plugin for implementing consistent **HTTP and Model Context Protocol (MCP) error handling** across Node.js applications and AI tools.
+An AI agent skill and Antigravity plugin that helps developers and AI coding assistants implement consistent **HHTTP and MCP error handling**H across Node.js applications.
+
+Includes framework-specific instructions, integration examples, and best practices for RFC 7807 / RFC 9457 Problem Details, HTTP status codes (RFC 9110), validation error handling, and MCP error responses.
 
 It provides instructions, recipes, and best practices for RFC 7807 / RFC 9457 Problem Details, standard HTTP status codes (RFC 9110), validation error transformations, and standardized MCP error responses using `@wthek`, [`http-error-kit`](https://www.npmjs.com/package/http-error-kit), and [`http-response-status-code`](https://www.npmjs.com/package/http-response-status-code).
 
@@ -216,7 +218,7 @@ npx @wthek/error-handling [command] [options]
 
 ---
 
-## People
+## Author
 
 The original author of the project is [Himanshu Bansal][skillnter]
 
