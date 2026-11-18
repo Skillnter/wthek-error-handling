@@ -3,12 +3,11 @@ import {
   SOURCE_SKILL_DIR,
   SOURCE_PLUGIN_JSON,
   installSkill,
-  handlePostinstall,
 } from "./installer";
-import { IWthekPluginManifest, IInstallOptions, IPostinstallResult } from "./types";
+import { IWthekPluginManifest, IInstallOptions } from "./types";
 
-export type { IWthekPluginManifest, IInstallOptions, IPostinstallResult };
-export { installSkill, handlePostinstall };
+export type { IWthekPluginManifest, IInstallOptions };
+export { installSkill };
 
 /**
  * Returns absolute path to bundled wthek-error-handling skill folder.

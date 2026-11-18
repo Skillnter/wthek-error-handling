@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import * as fs from "fs";
-import { installSkill, handlePostinstall } from "./installer";
+import { installSkill } from "./installer";
 import { IInstallOptions } from "./types";
 
 /**
@@ -46,7 +46,6 @@ Options:
   --global, -g        Install to global Antigravity config (~/.gemini/config/plugins/wthek-error-handling)
   --github            Install to GitHub workflows folder (.github/skills/wthek-error-handling)
   --dest <path>       Install to a custom directory path
-  --postinstall       Internal flag invoked during npm postinstall lifecycle
   --help, -h          Display this help message
 
 Examples:
@@ -136,20 +135,6 @@ export const printSuccessBanner = (targets: string[]): void => {
  */
 export const runCli = (): void => {
   const args = process.argv.slice(2);
-
-  if (args.includes("--postinstall")) {
-    const result = handlePostinstall();
-    if (result.installed) {
-      printSuccessBanner(result.targets);
-    } else {
-      outputToTerminal(
-        `\n[WTHek] Postinstall notice: ${result.reason || "Skipped installation."}\n` +
-        `        Run manually: npx @wthek/error-handling\n` +
-        `        Sponsor / Support: https://github.com/sponsors/Skillnter\n`
-      );
-    }
-    return;
-  }
 
   if (args.includes("--help") || args.includes("-h")) {
     printHelp();
