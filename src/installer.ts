@@ -86,6 +86,14 @@ export const resolveTargetDir = (options?: IInstallOptions): string => {
  *
  * @param {IInstallOptions} [options] - Optional settings controlling target directory location.
  * @returns {string} Absolute path where skill files were installed.
+ *
+ * @example
+ * ```typescript
+ * import { installSkill } from "@wthek/error-handling";
+ *
+ * const installedPath = installSkill();
+ * console.log(`Installed to ${installedPath}`);
+ * ```
  */
 export const installSkill = (options?: IInstallOptions): string => {
   const targetDir = resolveTargetDir(options);

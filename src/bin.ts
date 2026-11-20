@@ -28,6 +28,13 @@ export const outputToTerminal = (text: string): void => {
  * Prints CLI usage instructions and options to standard output.
  *
  * @returns {void} No return value.
+ *
+ * @example
+ * ```typescript
+ * import { printHelp } from "./bin";
+ *
+ * printHelp();
+ * ```
  */
 export const printHelp = (): void => {
   outputToTerminal(`
@@ -60,6 +67,14 @@ Examples:
  *
  * @param {string[]} args - Command line arguments passed to process.
  * @returns {IInstallOptions} Parsed installation options object.
+ *
+ * @example
+ * ```typescript
+ * import { parseArgs } from "./bin";
+ *
+ * const options = parseArgs(["--global"]);
+ * console.log(options.global); // true
+ * ```
  */
 export const parseArgs = (args: string[]): IInstallOptions => {
   const isGlobal = args.includes("--global") || args.includes("-g");
