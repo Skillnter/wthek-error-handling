@@ -10,6 +10,14 @@ jest.mock("os", () => {
   };
 });
 
+jest.mock("fs", () => {
+  const actual = jest.requireActual("fs");
+  return {
+    ...actual,
+    readdirSync: jest.fn((...args: any[]) => (actual.readdirSync as any)(...args)),
+  };
+});
+
 import {
   copyDirRecursive,
   resolveTargetDir,
@@ -52,6 +60,21 @@ describe("installer", () => {
       expect(fs.existsSync(path.join(dest, "sub", "file2.txt"))).toBe(true);
       expect(fs.readFileSync(path.join(dest, "sub", "file2.txt"), "utf8")).toBe("world");
     });
+
+    it("should throw if an entry causes path traversal", () => {
+      const src = path.join(tmpDir, "source-traversal");
+      const dest = path.join(tmpDir, "dest-traversal");
+      fs.mkdirSync(src, { recursive: true });
+
+      const fakeDirent = {
+        name: "../escaped-file",
+        isDirectory: () => false,
+        isFile: () => true,
+      };
+      (fs.readdirSync as unknown as jest.Mock).mockReturnValueOnce([fakeDirent]);
+
+      expect(() => copyDirRecursive(src, dest)).toThrow("Path traversal detected");
+    });
   });
 
   describe("resolveTargetDir", () => {
@@ -63,6 +86,18 @@ describe("installer", () => {
     it("should resolve custom destination path when dest is provided", () => {
       const target = resolveTargetDir({ dest: "./custom-dir" });
       expect(target).toBe(path.resolve(process.cwd(), "./custom-dir"));
+    });
+
+    it("should throw error if dest contains directory traversal sequence", () => {
+      expect(() => resolveTargetDir({ dest: "../traversal" })).toThrow(
+        "Invalid destination path: directory traversal is not allowed"
+      );
+    });
+
+    it("should throw error if dest contains null byte", () => {
+      expect(() => resolveTargetDir({ dest: "bad\0dest" })).toThrow(
+        "Invalid destination path: directory traversal is not allowed"
+      );
     });
 
     it("should resolve global Antigravity config directory when global is true", () => {

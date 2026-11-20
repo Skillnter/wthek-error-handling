@@ -33,9 +33,10 @@ app.use(async (ctx) => {
     if (ctx.method === "POST" && ctx.path === "/items") {
         try {
             Value.Assert(CreateItemSchema, ctx.request.body);
-            const data = ctx.request.body as CreateItemDto;
+            const { title, price } = ctx.request.body as CreateItemDto;
             ctx.status = CREATED;
-            ctx.body = { status: "created", item: data };
+            ctx.type = "application/json";
+            ctx.body = { status: "created", item: { title, price } };
         } catch (err: unknown) {
             KitTypeBoxTransformer(err, { statusCode: UNPROCESSABLE_ENTITY });
         }
@@ -43,6 +44,7 @@ app.use(async (ctx) => {
     }
 
     if (ctx.method === "GET" && ctx.path === "/items/1") {
+        ctx.type = "application/json";
         ctx.body = { id: 1, title: "Standard Item", price: 29.99 };
         return;
     }

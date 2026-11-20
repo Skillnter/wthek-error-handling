@@ -33,12 +33,17 @@ export const copyDirRecursive = (src: string, dest: string): void => {
   if (!fs.existsSync(src)) {
     return;
   }
-  fs.mkdirSync(dest, { recursive: true });
+  const resolvedDest = path.resolve(dest);
+  fs.mkdirSync(resolvedDest, { recursive: true });
   const entries = fs.readdirSync(src, { withFileTypes: true });
 
   for (const entry of entries) {
     const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
+    const destPath = path.resolve(resolvedDest, entry.name);
+
+    if (!destPath.startsWith(resolvedDest + path.sep) && destPath !== resolvedDest) {
+      throw new Error(`Path traversal detected: ${destPath}`);
+    }
 
     if (entry.isDirectory()) {
       copyDirRecursive(srcPath, destPath);
@@ -56,6 +61,9 @@ export const copyDirRecursive = (src: string, dest: string): void => {
  */
 export const resolveTargetDir = (options?: IInstallOptions): string => {
   if (options?.dest) {
+    if (options.dest.includes("\0") || options.dest.split(/[/\\]/).includes("..")) {
+      throw new Error("Invalid destination path: directory traversal is not allowed");
+    }
     return path.resolve(process.cwd(), options.dest);
   }
   if (options?.global) {

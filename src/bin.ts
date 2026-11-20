@@ -68,7 +68,11 @@ export const parseArgs = (args: string[]): IInstallOptions => {
   let dest: string | undefined = undefined;
 
   if (destIndex !== -1 && args[destIndex + 1]) {
-    dest = args[destIndex + 1];
+    const rawDest = args[destIndex + 1];
+    if (rawDest.includes("\0") || rawDest.split(/[/\\]/).includes("..")) {
+      throw new Error("Invalid destination path: directory traversal is not allowed");
+    }
+    dest = rawDest;
   }
 
   return {

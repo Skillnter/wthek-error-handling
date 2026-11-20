@@ -33,6 +33,18 @@ describe("bin / CLI helpers", () => {
       const opts = parseArgs(["--dest", "./my-folder"]);
       expect(opts.dest).toBe("./my-folder");
     });
+
+    it("should throw error if --dest contains directory traversal sequence", () => {
+      expect(() => parseArgs(["--dest", "../secret"])).toThrow(
+        "Invalid destination path: directory traversal is not allowed"
+      );
+    });
+
+    it("should throw error if --dest contains null byte", () => {
+      expect(() => parseArgs(["--dest", "bad\0path"])).toThrow(
+        "Invalid destination path: directory traversal is not allowed"
+      );
+    });
   });
 
   describe("printHelp", () => {
