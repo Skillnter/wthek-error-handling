@@ -13,6 +13,7 @@ KitHttpErrorConfig.configureFormatter((statusCode, message, details) => ({
 }));
 
 const app = express();
+app.disable("x-powered-by");
 app.use(express.json());
 
 // 2. Application routes

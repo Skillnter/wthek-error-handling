@@ -1,0 +1,46 @@
+# @wthek/error-handling
+
+> AI agent skill and Antigravity plugin for standardized HTTP error handling.
+
+## Overview
+`@wthek/error-handling` distributes production-grade error-handling instructions, reference guides, and recipes to AI coding agents (Antigravity, Cursor, Claude Code, GitHub Copilot, Windsurf, Codex). It installs structured rules ensuring agents follow `@wthek`, `http-error-kit`, and `http-response-status-code` standards across Express, Fastify, Hono, Koa, NestJS, Restify, and MCP backends.
+
+## Installation & Setup
+
+### CLI Installation (Workspace Skill)
+```bash
+npx @wthek/error-handling
+```
+Installs the skill directly to `.agents/skills/wthek-error-handling/` in the current project root.
+
+### CLI Installation Options
+- `npx @wthek/error-handling` — Default workspace install (`.agents/skills/wthek-error-handling`)
+- `npx @wthek/error-handling --global` — Global Antigravity plugin (`~/.gemini/config/plugins/wthek-error-handling`)
+- `npx @wthek/error-handling --github` — GitHub workflow skill (`.github/skills/wthek-error-handling`)
+- `npx @wthek/error-handling --dest <path>` — Custom directory destination
+
+### Programmatic API
+```typescript
+import { installSkill, getSkillPath, getPluginManifest } from "@wthek/error-handling";
+
+// Install to custom destination
+const installedPath = installSkill({ dest: "./custom/skills/wthek-error-handling" });
+
+// Get path to bundled skill directory
+const skillPath = getSkillPath();
+
+// Get parsed plugin.json manifest
+const manifest = getPluginManifest();
+```
+
+## Bundled Skill Contents
+- `SKILL.md` — Core instructions, philosophy, anti-patterns, and decision matrices.
+- `references/` — Detailed reference guides for RFC-7807/9457 Problem Details, HTTP status codes, middleware, and transformers.
+- `examples/` — Production-grade runnable server recipes for Express, Fastify, Hono, Koa, and NestJS.
+
+## Safety Rules for AI Agents
+1. Never write manual `res.status(code).json({ error })` response mutations; throw typed `KitHttpError` classes instead.
+2. Transform validation failures using companion packages (`@wthek/zod-transformer`, `@wthek/typebox-transformer`, `@wthek/valibot-transformer`).
+3. Always place error-handling middleware after application routes (or top of the stack for Koa).
+4. Guard custom Express error handlers by checking `if (res.headersSent) return next(err);`.
+

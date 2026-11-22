@@ -3,15 +3,19 @@
 [![npm version](https://img.shields.io/npm/v/%40wthek%2Ferror-handling.svg)](https://www.npmjs.com/package/@wthek/error-handling)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/Skillnter/wthek-error-handling/main.yml?branch=main)](https://github.com/Skillnter/wthek-error-handling/actions)
-[![Socket](https://socket.dev/api/badge/npm/package/@wthek/error-handling)](https://socket.dev/npm/package/@wthek/error-handling)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/error-handling/)](https://socket.dev/npm/package/@wthek/error-handling/overview/)
 [![Skills](https://skills.sh/b/Skillnter/wthek-error-handling)](https://skills.sh/Skillnter/wthek-error-handling)
 ![Antigravity Plugin](https://img.shields.io/badge/Antigravity-Plugin_Included-4285F4?logo=google&logoColor=white) 
 ![Agent Skills](https://img.shields.io/badge/Agent_Skills-Format-0F766E?logo=githubcopilot&logoColor=white) 
 ![MCP](https://img.shields.io/badge/MCP-Error_Handling-2563EB?logo=protocols.io&logoColor=white)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?logo=github&logoColor=white)](https://skillnter.github.io/wthek-error-handling/)
+[![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Skillnter)
+[![Open Collective](https://img.shields.io/badge/Open%20Collective-3385FF?logo=open-collective&logoColor=white)](https://opencollective.com/wthek-error-handling)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/skillnter)
+[![Patreon](https://img.shields.io/badge/Patreon-F96854?logo=patreon&logoColor=white)](https://www.patreon.com/skillnter)
+[![PayPal](https://img.shields.io/badge/PayPal-003087?logo=paypal&logoColor=fff)](https://www.paypal.me/skillnte)
 
-An AI agent skill and Antigravity plugin that helps developers and AI coding assistants implement consistent **HHTTP and MCP error handling**H across Node.js applications.
-
-Includes framework-specific instructions, integration examples, and best practices for RFC 7807 / RFC 9457 Problem Details, HTTP status codes (RFC 9110), validation error handling, and MCP error responses.
+An AI agent skill and Antigravity plugin that helps developers and AI coding assistants implement consistent **HTTP and MCP error handling** across Node.js applications.
 
 It provides instructions, recipes, and best practices for RFC 7807 / RFC 9457 Problem Details, standard HTTP status codes (RFC 9110), validation error transformations, and standardized MCP error responses using `@wthek`, [`http-error-kit`](https://www.npmjs.com/package/http-error-kit), and [`http-response-status-code`](https://www.npmjs.com/package/http-response-status-code).
 
@@ -215,6 +219,27 @@ npx @wthek/error-handling [command] [options]
 | `--github` | Install into `.github/skills/wthek-error-handling`. |
 | `--dest <path>` | Install into a custom directory path. |
 | `--help`, `-h` | Display the CLI help message. |
+
+---
+
+## AI Agent Integration
+
+When building with AI coding assistants (Claude Code, Cursor, GitHub Copilot, Antigravity, Devin), install this skill into your workspace:
+
+```bash
+npx @wthek/error-handling
+```
+
+And add the following directive to your project's `.cursorrules`, `.github/copilot-instructions.md`, or system prompt:
+
+```markdown
+### WTHek Error Handling Skill Rule
+- Follow the error handling conventions, decision trees, and recipes in `.agents/skills/wthek-error-handling/SKILL.md`.
+- Throw structured `KitHttpError` classes from `http-error-kit` instead of mutating response status directly.
+- Utilize RFC 9110 status codes from `http-response-status-code`.
+- Transform validation errors using `@wthek/*-transformer` packages.
+- Format MCP tool errors using `@wthek/mcp-error-formatter`.
+```
 
 ---
 

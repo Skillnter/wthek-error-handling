@@ -28,6 +28,13 @@ export const outputToTerminal = (text: string): void => {
  * Prints CLI usage instructions and options to standard output.
  *
  * @returns {void} No return value.
+ *
+ * @example
+ * ```typescript
+ * import { printHelp } from "./bin";
+ *
+ * printHelp();
+ * ```
  */
 export const printHelp = (): void => {
   outputToTerminal(`
@@ -60,6 +67,14 @@ Examples:
  *
  * @param {string[]} args - Command line arguments passed to process.
  * @returns {IInstallOptions} Parsed installation options object.
+ *
+ * @example
+ * ```typescript
+ * import { parseArgs } from "./bin";
+ *
+ * const options = parseArgs(["--global"]);
+ * console.log(options.global); // true
+ * ```
  */
 export const parseArgs = (args: string[]): IInstallOptions => {
   const isGlobal = args.includes("--global") || args.includes("-g");
@@ -68,7 +83,11 @@ export const parseArgs = (args: string[]): IInstallOptions => {
   let dest: string | undefined = undefined;
 
   if (destIndex !== -1 && args[destIndex + 1]) {
-    dest = args[destIndex + 1];
+    const rawDest = args[destIndex + 1];
+    if (rawDest.includes("\0") || rawDest.split(/[/\\]/).includes("..")) {
+      throw new Error("Invalid destination path: directory traversal is not allowed");
+    }
+    dest = rawDest;
   }
 
   return {
