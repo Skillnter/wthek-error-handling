@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/%40wthek%2Ferror-handling.svg)](https://www.npmjs.com/package/@wthek/error-handling)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/Skillnter/wthek-error-handling/main.yml?branch=main)](https://github.com/Skillnter/wthek-error-handling/actions)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/error-handling/1.0.0-beta.3)](https://socket.dev/npm/package/@wthek/error-handling/overview/1.0.0-beta.3)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/error-handling/)](https://socket.dev/npm/package/@wthek/error-handling/overview/)
 [![Skills](https://skills.sh/b/Skillnter/wthek-error-handling)](https://skills.sh/Skillnter/wthek-error-handling)
 ![Antigravity Plugin](https://img.shields.io/badge/Antigravity-Plugin_Included-4285F4?logo=google&logoColor=white) 
 ![Agent Skills](https://img.shields.io/badge/Agent_Skills-Format-0F766E?logo=githubcopilot&logoColor=white) 
