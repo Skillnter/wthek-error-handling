@@ -3,11 +3,17 @@
 [![npm version](https://img.shields.io/npm/v/%40wthek%2Ferror-handling.svg)](https://www.npmjs.com/package/@wthek/error-handling)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/Skillnter/wthek-error-handling/main.yml?branch=main)](https://github.com/Skillnter/wthek-error-handling/actions)
-[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/error-handling/1.0.0-beta.3)](https://socket.dev/npm/package/@wthek/error-handling/overview/1.0.0-beta.3)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/@wthek/error-handling/)](https://socket.dev/npm/package/@wthek/error-handling/overview/)
 [![Skills](https://skills.sh/b/Skillnter/wthek-error-handling)](https://skills.sh/Skillnter/wthek-error-handling)
 ![Antigravity Plugin](https://img.shields.io/badge/Antigravity-Plugin_Included-4285F4?logo=google&logoColor=white) 
 ![Agent Skills](https://img.shields.io/badge/Agent_Skills-Format-0F766E?logo=githubcopilot&logoColor=white) 
 ![MCP](https://img.shields.io/badge/MCP-Error_Handling-2563EB?logo=protocols.io&logoColor=white)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?logo=github&logoColor=white)](https://skillnter.github.io/wthek-error-handling/)
+[![Github Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-30363D?&logo=GitHub-Sponsors&logoColor=EA4AAA)](https://github.com/sponsors/Skillnter)
+[![Open Collective](https://img.shields.io/badge/Open%20Collective-3385FF?logo=open-collective&logoColor=white)](https://opencollective.com/wthek-error-handling)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/skillnter)
+[![Patreon](https://img.shields.io/badge/Patreon-F96854?logo=patreon&logoColor=white)](https://www.patreon.com/skillnter)
+[![PayPal](https://img.shields.io/badge/PayPal-003087?logo=paypal&logoColor=fff)](https://www.paypal.me/skillnte)
 
 An AI agent skill and Antigravity plugin that helps developers and AI coding assistants implement consistent **HTTP and MCP error handling** across Node.js applications.
 
