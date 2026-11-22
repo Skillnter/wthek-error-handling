@@ -1,6 +1,6 @@
 {
   "name": "@wthek/error-handling",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0",
   "description": "Antigravity skill and AI agent instruction bundle for standardized HTTP error handling, RFC-7807/9457 Problem Details, status codes, and validation pipelines using @wthek and http-error-kit.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
